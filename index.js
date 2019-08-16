@@ -59,5 +59,13 @@ let Enum = function(...items) {
   Enum.prototype.toMap = function() {
     return new Map(Object.keys(object).map(key => [key, object[key]]));
   };
+  Enum.prototype.clone = function() {
+    return new Enum(object);
+  };
+  Enum.prototype.cloneWithPromise = async function(callbackfn) {
+    let enumClone = await this.promise();
+    !!callbackfn && callbackfn(enumClone);
+    return enumClone;
+  };
 };
 module.exports = Enum;
