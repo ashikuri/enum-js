@@ -24,5 +24,7 @@ enums.toObject() // {Object} return a new Object
 enums.forEach(callback) // {nothing} allows of browse each element of enumeration
 enums.map(callback) // {Enum} allows of browse each element of enumeration and edit this element all the promises
 enums.set(...items) // {Enum} add or edit the elements of enumerable with `items` remove all the promises
-enums.promise(callback?) // {Promise} add all the promises in the list enumerable 
+enums.promise(callback?) // {Promise<Enum>} add all the promises in the list enumerable 
+enums.clone() // {Enum} clone enumeration
+enums.cloneWithPromise(callback?) // {Promise<Enum>} clone enumeration with promise
 ```
