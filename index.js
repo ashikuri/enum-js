@@ -28,11 +28,11 @@ let Enum = function(...items) {
     {},
     ...(Enum.use === "name" ? mapped : []),
     ...(Enum.use === "index"
-      ? mapped.map((o, i) => {
+      ? mapped.map((o, I) => {
           let keys = Object.keys(o);
           return Object.assign(
             {},
-            ...keys.map((name, i) => ({ [i]: o[name] }))
+            ...keys.map((name, i) => ({ [name]: i + I }))
           );
         })
       : [])
@@ -81,5 +81,5 @@ let Enum = function(...items) {
     return enumClone;
   };
 };
-Enum.use = "name";
+Enum.use = "index";
 module.exports = Enum;
