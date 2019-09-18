@@ -23,7 +23,20 @@ let Enum = function(...items) {
     }
     return { [item]: item };
   };
-  let object = Object.assign({}, ...items.map(toObj));
+  let mapped = items.map(toObj);
+  let object = Object.assign(
+    {},
+    ...(Enum.use === "name" ? mapped : []),
+    ...(Enum.use === "index"
+      ? mapped.map((o, i) => {
+          let keys = Object.keys(o);
+          return Object.assign(
+            {},
+            ...keys.map((name, i) => ({ [i]: o[name] }))
+          );
+        })
+      : [])
+  );
   if (!(this instanceof Enum)) return object;
   for (const item in object) this[item] = object[item];
   Enum.prototype.size = items.length;
@@ -68,4 +81,5 @@ let Enum = function(...items) {
     return enumClone;
   };
 };
+Enum.use = "name";
 module.exports = Enum;
