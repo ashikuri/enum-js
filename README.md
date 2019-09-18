@@ -13,7 +13,13 @@ let enums = new Enum("item1", 2, {item3: "item3"}, ["item4", "item4"], function(
 }, new Promise((resolv) =>resolv({item6: "item6"})), function*(){
   yield {item7: "item7"}
   return {item8: "item8"}
-}, "item9 = 9") // return {item1: "item1", 2: 2, item3: "item3", item4: "item4", item5: "item5", item7: "item7", item8: "item8", item9: 9}
+}, "item9 = 9") 
+
+// if Enum.use is equal "name"
+// return {item1: "item1", 2: 2, item3: "item3", item4: "item4", item5: "item5", item7: "item7", item8: "item8", item9: 9}
+
+// if Enum.use is equal "index"
+// return {1: "item1", 2: 2, 3: "item3", 4: "item4", 5: "item5", 7: "item7", 8: "item8", 9: 9}
 ```
 Enum methods:
 ```js
